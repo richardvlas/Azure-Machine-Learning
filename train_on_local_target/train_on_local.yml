@@ -1,0 +1,7 @@
+name: train_on_local
+dependencies:
+- matplotlib
+- scikit-learn
+- pip:
+  - azureml-sdk
+  - azureml-widgets
