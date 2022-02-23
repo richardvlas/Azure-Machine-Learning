@@ -30,3 +30,5 @@ pip install azureml-pipeline
 pip install azureml-pipeline-steps
 ```
 
+If you start with Azure Machine Learning, [here](azure-ml-quickstarts) are some resources to get started.
+
