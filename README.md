@@ -1,2 +1,2 @@
-# AzureML-examples
+# Azure Machine Learning
 Repository of Azure Machine Learning examples
