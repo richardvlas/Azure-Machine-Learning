@@ -3,7 +3,7 @@ display_name: Example Train
 version: 20
 type: command
 description: Example of a torchvision training component
-tags: {category: Component Tutorial, contact: user@contoso.com}
+tags: {category: Component Tutorial, contact: user@ai.com}
 inputs:
   training_data: 
     type: path
@@ -22,7 +22,7 @@ outputs:
   model_output:
     type: path
 code:
-  local_path: ./train_src
+  local_path: ./
 environment: azureml:AzureML-Minimal:1
 command: >-
   python train.py 
