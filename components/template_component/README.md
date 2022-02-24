@@ -140,8 +140,21 @@ model = f"This is a dummy model with id: {str(uuid4())} generated at: {curtime}\
 After you define your component specification and Python script files, and [install CLI (v2) successfully](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-configure-cli), you can create the component in your workspaces using:
   
 ```bash
-az ml component create --file my_component.yml --version 1 --resource-group my-resource-group --workspace-name my-workspace
+az ml component create --file my_component.yml --version 1 --resource-group aml-resource-group --workspace-name aml-workspace
 ```
   
 Use `az ml component create --help` for more information on the `create` command.
 
+Optionally, setup common variables in your shell for usage in subsequent commands:
+  
+```bash
+GROUP="aml-resource-group"
+LOCATION="westeurope"
+WORKSPACE="aml-workspace"
+```
+
+Now a new component can be created as follows:
+  
+```bash
+az ml component create --file component.yaml --version 1 --resource-group $GROUP --workspace-name $WORKSPACE
+```
