@@ -194,7 +194,7 @@ az ml component create --file <NEW_VERSION.yaml>
 You can use the following command to delete a component.
 
 ```bash
-az ml component create --file <NEW_VERSION.yaml>
+az ml component delete --file <NEW_VERSION.yaml>
 ```
 
   
