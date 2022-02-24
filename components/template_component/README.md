@@ -21,7 +21,7 @@ To define an Azure Machine Learning component, you must provide two files:
   - Command, code, & environment: The command, code, and environment used to run the component
 - A script to provide the actual execution logic.
 
-## Component specification
+### Component specification
 The component specification file defines the metadata and execution parameters for a component. The component spec tells Azure Machine Learning how to run the Python script that you provide.
 
 The following YAML example is a component specification for a training component.
@@ -79,7 +79,7 @@ The following table explains the fields in the example. For a full list of avail
 | environment |	Environment	| No | The runtime environment for the component to run. |
 | command |	string | No |	The command to run the component code. |
 
-## Python script
+### Python script
 Your Python script contains the executable logic for your component. Your script tells Azure Machine Learning what you want your component to do.
 
 To run, you must match the arguments for your Python script with the arguments you defined in the YAML specification. The following example is a Python training script that matches the YAML specification from the previous section.
@@ -135,4 +135,13 @@ model = f"This is a dummy model with id: {str(uuid4())} generated at: {curtime}\
 
 ![component code structure](component-code-structure.png)
 
+## Create a component
+### Create a component using CLI (v2)
+After you define your component specification and Python script files, and [install CLI (v2) successfully](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-configure-cli), you can create the component in your workspaces using:
+  
+```bash
+az ml component create --file my_component.yml --version 1 --resource-group my-resource-group --workspace-name my-workspace
+```
+  
+Use `az ml component create --help` for more information on the `create` command.
 
