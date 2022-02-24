@@ -158,3 +158,47 @@ Now a new component can be created as follows:
 ```bash
 az ml component create --file component.yaml --version 1 --resource-group $GROUP --workspace-name $WORKSPACE
 ```
+
+## Use components to build ML pipelines
+You can use the Azure CLI (v2) to create a pipeline job. See [Create and run ML pipelines (CLI)](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-create-component-pipelines-cli).
+
+## Manage components
+You can check component details and manage the component using CLI (v2). Use the following command to get detailed instructions on component command.
+
+```bash
+az ml component -h
+```
+  
+### List components
+You can use the following command to list all components in a workspace.
+
+```bash
+az ml component list --resource-group $GROUP --workspace-name $WORKSPACE
+```
+  
+### Show details for a component
+You can use the following command to show the details of a component.
+
+```bash
+az ml component show --name <COMPONENT_NAME>
+```
+
+### Upgrade a component
+You can use the following command to upgrade a component.
+
+```bash
+az ml component create --file <NEW_VERSION.yaml>
+```
+  
+### Delete a component
+You can use the following command to delete a component.
+
+```bash
+az ml component create --file <NEW_VERSION.yaml>
+```
+
+  
+
+
+
+
