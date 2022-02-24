@@ -62,3 +62,24 @@ command: >-
   --model_output ${{outputs.model_output}}
 ```
 
+The following table explains the fields in the example. For a full list of available fields, see the [YAML component specification reference page](https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command).
+
+| Name  | Type | Required | Description |
+| ------------- | ------------- | ------------- | ------------- |
+| name  | string | Yes | Name of the component. Must be a unique identifier of the component. Must start with number or letter, and only contain letters, numbers, `_`, and `-`. Maximum length is 255 characters. |
+| version |	string | Yes | Version of the component. Must be a string.|
+| display_name | string |	No | Display name of the component. Defaults to same as `name`. |
+| type | string |	No | The type of the component. Currently, this value must be `command`. |
+| description | string | No |	Detailed description of the component. |
+| tags | Dictionary<string>	| No | A list of key-value pairs to describe different perspectives of the component. Each tag's key and value should be one word or a short phrase, for example, `Product:Office`, `Domain:NLP`, `Scenario:Image Classification`. |
+| is_deterministic | boolean | No |	Whether the component will always generate the same result when given the same input data. The default is `True`. Should be set to `False` for components that will load data from external resources, for instance, importing data from a given url, since the data may be updated. |
+| inputs | Dictionary<string, Input> | No |	Defines input ports and parameters of the component. The string key is the name of the input, which must be a valid Python variable name. |
+| outputs | Dictionary<string, Output> | No |	Defines output ports of the component. The string key is the name of the output, which must be a valid Python variable name. |
+| code | string |	No | Path to the source code. |
+| environment |	Environment	| No | The runtime environment for the component to run. |
+| command |	string | No |	The command to run the component code. |
+
+
+
+
+
