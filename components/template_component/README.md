@@ -79,7 +79,60 @@ The following table explains the fields in the example. For a full list of avail
 | environment |	Environment	| No | The runtime environment for the component to run. |
 | command |	string | No |	The command to run the component code. |
 
+## Python script
+Your Python script contains the executable logic for your component. Your script tells Azure Machine Learning what you want your component to do.
 
+To run, you must match the arguments for your Python script with the arguments you defined in the YAML specification. The following example is a Python training script that matches the YAML specification from the previous section.
 
+```python
+## Required imports 
+import argparse
+import os
+## Import other dependencies your script needs
+from pathlib import Path
+from uuid import uuid4
+from datetime import datetime
+
+## Define an argument parser that matches the arguments from the components specification file
+parser = argparse.ArgumentParser("train")
+parser.add_argument("--training_data", type=str, help="Path to training data")
+parser.add_argument("--max_epochs", type=int, help="Max # of epochs for the training")
+parser.add_argument("--learning_rate", type=float, help="Learning rate")
+parser.add_argument("--learning_rate_schedule", type=str, help="Learning rate schedule")
+parser.add_argument("--model_output", type=str, help="Path of output model")
+
+args = parser.parse_args()
+
+## Implement your custom logic (in this case a training script)
+print ("hello training world...")
+
+lines = [
+    f'Training data path: {args.training_data}',
+    f'Max epochs: {args.max_epochs}',
+    f'Learning rate: {args.learning_rate}',
+    f'Learning rate: {args.learning_rate_schedule}',
+    f'Model output path: {args.model_output}',
+]
+
+for line in lines:
+    print(line)
+
+print("mounted_path files: ")
+arr = os.listdir(args.training_data)
+print(arr)
+
+for filename in arr:
+    print ("reading file: %s ..." % filename)
+    with open(os.path.join(args.training_data, filename), 'r') as handle:
+        print (handle.read())
+
+## Do the train and save the trained model as a file into the output folder.
+## Here only output a dummy data for example.
+curtime = datetime.now().strftime("%b-%d-%Y %H:%M:%S")
+model = f"This is a dummy model with id: {str(uuid4())} generated at: {curtime}\n"
+(Path(args.model_output) / 'model.txt').write_text(model)
+```
+
+![component code structure](component-code-structure.png)
 
 
