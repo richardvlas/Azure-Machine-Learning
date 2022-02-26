@@ -178,6 +178,18 @@ with open(upload_file_path, "rb") as data:
 ```
 
 ### List the blobs in a container
+List the blobs in the container by calling the [list_blobs](https://docs.microsoft.com/en-us/python/api/azure-storage-blob/azure.storage.blob.containerclient#list-blobs-name-starts-with-none--include-none----kwargs-) method. In this case, only one blob has been added to the container, so the listing operation returns just that one blob.
+
+Add this code to the end of the `try` block:
+
+```bash
+print("\nListing blobs...")
+
+# List the blobs in the container
+blob_list = container_client.list_blobs()
+for blob in blob_list:
+    print("\t" + blob.name)
+```
 
 
 ### Download blobs
