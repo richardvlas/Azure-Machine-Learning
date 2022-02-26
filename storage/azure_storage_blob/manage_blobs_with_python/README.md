@@ -99,3 +99,44 @@ Use the following Python classes to interact with these resources:
 - [ContainerClient](https://docs.microsoft.com/en-us/python/api/azure-storage-blob/azure.storage.blob.containerclient): The `ContainerClient` class allows you to manipulate Azure Storage containers and their blobs.
 - [BlobClient](https://docs.microsoft.com/en-us/python/api/azure-storage-blob/azure.storage.blob.blobclient): The `BlobClient` class allows you to manipulate Azure Storage blobs.
 
+## Code examples
+These example code snippets show you how to do the following tasks with the Azure Blob Storage client library for Python:
+
+- [Get the connection string](#get-the-connection-string)
+- [Create a container](#create-a-container)
+- [Upload blobs to a container](#upload-blobs-to-a-container)
+- [List the blobs in a container](#list-the-blobs-in-a-container)
+- [Download blobs](#download-blobs)
+- [Delete a container](#delete-a-container)
+
+### Get the connection string
+The code below retrieves the storage account connection string from the environment variable created in the [Configure your storage connection string](#configure-your-storage-connection-string) section.
+
+Add this code inside the `try` block:
+
+```bash
+# Retrieve the connection string for use with the application. The storage
+# connection string is stored in an environment variable on the machine
+# running the application called AZURE_STORAGE_CONNECTION_STRING. If the environment variable is
+# created after the application is launched in a console or with Visual Studio,
+# the shell or application needs to be closed and reloaded to take the
+# environment variable into account.
+connect_str = os.getenv('AZURE_STORAGE_CONNECTION_STRING')
+```
+
+
+### Create a container
+
+
+### Upload blobs to a container
+
+
+### List the blobs in a container
+
+
+### Download blobs
+
+
+### Delete a container
+
+
