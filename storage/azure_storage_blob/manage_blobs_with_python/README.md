@@ -81,4 +81,21 @@ export AZURE_STORAGE_CONNECTION_STRING="<yourconnectionstring>"
 ### Restart programs
 After you add the environment variable, restart any running programs that will need to read the environment variable. For example, restart your development environment or editor before you continue.
 
+## Object model
+Azure Blob Storage is optimized for storing massive amounts of unstructured data. Unstructured data is data that doesn't adhere to a particular data model or definition, such as text or binary data. Blob storage offers three types of resources:
+
+- The storage account
+- A container in the storage account
+- A blob in the container
+
+The following diagram shows the relationship between these resources.
+
+![Blob storage](assets/blob-storage-structure.png)
+
+
+Use the following Python classes to interact with these resources:
+
+- [BlobServiceClient](https://docs.microsoft.com/en-us/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient): The `BlobServiceClient` class allows you to manipulate Azure Storage resources and blob containers.
+- [ContainerClient](https://docs.microsoft.com/en-us/python/api/azure-storage-blob/azure.storage.blob.containerclient): The `ContainerClient` class allows you to manipulate Azure Storage containers and their blobs.
+- [BlobClient](https://docs.microsoft.com/en-us/python/api/azure-storage-blob/azure.storage.blob.blobclient): The `BlobClient` class allows you to manipulate Azure Storage blobs.
 
