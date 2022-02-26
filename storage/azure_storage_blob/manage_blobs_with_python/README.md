@@ -262,3 +262,8 @@ Done
 Before you begin the cleanup process, check your *data* folder for the two files. You can open them and observe that they're identical.
 
 After you've verified the files, press the Enter key to delete the test files and finish the demo.
+
+## Next steps
+In this quickstart, you learned how to upload, download, and list blobs using Python.
+
+To see Blob storage sample apps, continue to: [Azure Blob Storage SDK v12 Python samples](https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/storage/azure-storage-blob/samples)
