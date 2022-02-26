@@ -124,8 +124,27 @@ Add this code inside the `try` block:
 connect_str = os.getenv('AZURE_STORAGE_CONNECTION_STRING')
 ```
 
-
 ### Create a container
+Decide on a name for the new container. The code below appends a UUID value to the container name to ensure that it's unique.
+
+> **Important**: Container names must be lowercase.
+
+Create an instance of the [BlobServiceClient](https://docs.microsoft.com/en-us/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient) class by calling the [from_connection_string](https://docs.microsoft.com/en-us/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient#from-connection-string-conn-str--credential-none----kwargs-) method. Then, call the [create_container](https://docs.microsoft.com/en-us/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient#create-container-name--metadata-none--public-access-none----kwargs-) method to actually create the container in your storage account.
+
+Add this code to the end of the `try` block:
+
+```bash
+# Create the BlobServiceClient object which will be used to create a container client
+blob_service_client = BlobServiceClient.from_connection_string(connect_str)
+
+# Create a unique name for the container
+container_name = str(uuid.uuid4())
+
+# Create the container
+container_client = blob_service_client.create_container(container_name)
+```
+
+
 
 
 ### Upload blobs to a container
