@@ -144,13 +144,52 @@ container_name = str(uuid.uuid4())
 container_client = blob_service_client.create_container(container_name)
 ```
 
-
-
-
 ### Upload blobs to a container
+The following code snippet:
 
+1. Creates a local directory to hold data files.
+2. Creates a text file in the local directory.
+3. Gets a reference to a [BlobClient](https://docs.microsoft.com/en-us/python/api/azure-storage-blob/azure.storage.blob.blobclient) object by calling the [get_blob_client](https://docs.microsoft.com/en-us/python/api/azure-storage-blob/azure.storage.blob.containerclient#get-blob-client-blob--snapshot-none-) method on the [BlobServiceClient](https://docs.microsoft.com/en-us/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient) from the [Create a container](#create-a-container) section.
+4. Uploads the local text file to the blob by calling the [upload_blob](https://docs.microsoft.com/en-us/python/api/azure-storage-blob/azure.storage.blob.blobclient#upload-blob-data--blob-type--blobtype-blockblob---blockblob----length-none--metadata-none----kwargs-) method.
+Add this code to the end of the `try` block:
+
+```bash
+# Create a local directory to hold blob data
+local_path = "./data"
+os.mkdir(local_path)
+
+# Create a file in the local data directory to upload and download
+local_file_name = str(uuid.uuid4()) + ".txt"
+upload_file_path = os.path.join(local_path, local_file_name)
+
+# Write text to the file
+file = open(upload_file_path, 'w')
+file.write("Hello, World!")
+file.close()
+
+# Create a blob client using the local file name as the name for the blob
+blob_client = blob_service_client.get_blob_client(container=container_name, blob=local_file_name)
+
+print("\nUploading to Azure Storage as blob:\n\t" + local_file_name)
+
+# Upload the created file
+with open(upload_file_path, "rb") as data:
+    blob_client.upload_blob(data)
+```
 
 ### List the blobs in a container
+List the blobs in the container by calling the [list_blobs](https://docs.microsoft.com/en-us/python/api/azure-storage-blob/azure.storage.blob.containerclient#list-blobs-name-starts-with-none--include-none----kwargs-) method. In this case, only one blob has been added to the container, so the listing operation returns just that one blob.
+
+Add this code to the end of the `try` block:
+
+```bash
+print("\nListing blobs...")
+
+# List the blobs in the container
+blob_list = container_client.list_blobs()
+for blob in blob_list:
+    print("\t" + blob.name)
+```
 
 
 ### Download blobs
