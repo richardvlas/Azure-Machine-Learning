@@ -191,10 +191,20 @@ for blob in blob_list:
     print("\t" + blob.name)
 ```
 
-
 ### Download blobs
+Download the previously created blob by calling the [download_blob](https://docs.microsoft.com/en-us/python/api/azure-storage-blob/azure.storage.blob.blobclient#download-blob-offset-none--length-none----kwargs-) method. The example code adds a suffix of "DOWNLOAD" to the file name so that you can see both files in local file system.
 
+Add this code to the end of the `try` block:
+
+```bash
+# Download the blob to a local file
+# Add 'DOWNLOAD' before the .txt extension so you can see both files in the data directory
+download_file_path = os.path.join(local_path, str.replace(local_file_name ,'.txt', 'DOWNLOAD.txt'))
+print("\nDownloading blob to \n\t" + download_file_path)
+
+with open(download_file_path, "wb") as download_file:
+    download_file.write(blob_client.download_blob().readall())
+```
 
 ### Delete a container
-
 
