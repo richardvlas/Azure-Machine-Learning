@@ -229,3 +229,36 @@ os.rmdir(local_path)
 print("Done")
 ```
 
+## Run the code
+This app creates a test file in your local folder and uploads it to Azure Blob Storage. The example then lists the blobs in the container, and downloads the file with a new name. You can compare the old and new files.
+
+Navigate to the directory containing the *blob-quickstart-v12.py* file, then execute the following `python` command to run the app.
+
+```bash
+python blob-quickstart-v12.py
+```
+
+The output of the app is similar to the following example:
+
+```bash
+Azure Blob Storage v12 - Python quickstart sample
+
+Uploading to Azure Storage as blob:
+        cf275796-2188-4057-b6fb-038352e35038.txt
+
+Listing blobs...
+        cf275796-2188-4057-b6fb-038352e35038.txt
+
+Downloading blob to
+        ./data/cf275796-2188-4057-b6fb-038352e35038DOWNLOAD.txt
+
+Press the Enter key to begin clean up
+
+Deleting blob container...
+Deleting the local source and downloaded files...
+Done
+```
+
+Before you begin the cleanup process, check your *data* folder for the two files. You can open them and observe that they're identical.
+
+After you've verified the files, press the Enter key to delete the test files and finish the demo.
