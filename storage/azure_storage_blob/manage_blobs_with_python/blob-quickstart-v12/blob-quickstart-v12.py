@@ -61,14 +61,19 @@ try:
     with open(download_file_path, "wb") as download_file:
         download_file.write(blob_client.download_blob().readall())
     
-    
+    # Clean up
+    print("\nPress the Enter key to begin clean up")
+    input()
 
-                                                     
+    print("Deleting blob container...")
+    container_client.delete_container()
 
+    print("Deleting the local source and downloaded files...")
+    os.remove(upload_file_path)
+    os.remove(download_file_path)
+    os.rmdir(local_path)
 
-
-
-    
+    print("Done")
 
 except Exception as ex:
     print("Exception:")
