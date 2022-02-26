@@ -44,7 +44,26 @@ try:
     # Upload the created file
     with open(upload_file_path, "rb") as data:
         blob_client.upload_blob(data)
-                                                 
+
+    print("\nListing blobs...")
+
+    # List the blobs in the container
+    blob_list = container_client.list_blobs()
+    for blob in blob_list:
+        print("\t", blob.name)
+
+    # Download the blob to a local file
+    # Add 'DOWNLOAD' before the .txt extension so you can see both files in the
+    # data directory
+    download_file_path = os.path.join(local_path, str.replace(local_file_name, '.txt', 'DOWNLOAD.txt'))
+    print("\nDownloading blob to \n\t" + download_file_path)
+
+    with open(download_file_path, "wb") as download_file:
+        download_file.write(blob_client.download_blob().readall())
+    
+    
+
+                                                     
 
 
 
