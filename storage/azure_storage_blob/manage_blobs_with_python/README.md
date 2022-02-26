@@ -207,4 +207,25 @@ with open(download_file_path, "wb") as download_file:
 ```
 
 ### Delete a container
+The following code cleans up the resources the app created by removing the entire container using the [delete_container](https://docs.microsoft.com/en-us/python/api/azure-storage-blob/azure.storage.blob.containerclient#delete-container---kwargs-) method. You can also delete the local files, if you like.
+
+The app pauses for user input by calling `input()` before it deletes the blob, container, and local files. Verify that the resources were created correctly, before they're deleted.
+
+Add this code to the end of the `try` block:
+
+```bash
+# Clean up
+print("\nPress the Enter key to begin clean up")
+input()
+
+print("Deleting blob container...")
+container_client.delete_container()
+
+print("Deleting the local source and downloaded files...")
+os.remove(upload_file_path)
+os.remove(download_file_path)
+os.rmdir(local_path)
+
+print("Done")
+```
 
