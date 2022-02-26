@@ -64,8 +64,10 @@ When the sample application makes a request to Azure Storage, it must be authori
 2. Locate your storage account.
 3. In the storage account menu pane, under **Security + networking**, select **Access keys**. Here, you can view the account access keys and the complete connection string for each key.
 
-
 4. In the **Access keys** pane, select **Show keys**.
-![Access keys](assets/storage-account-access-key.png)
+5. In the **key1** section, locate the **Connection string** value. Select the **Copy to clipboard** icon to copy the connection string. You will add the connection string value to an environment variable in the next section.
+
+
+    ![Access keys](assets/storage-account-access-key.png)
 
 
