@@ -57,5 +57,15 @@ From the project directory:
     
 4. Save the new file as *blob-quickstart-v12.py* in the *blob-quickstart-v12* directory.
 
+### Copy your credentials from the Azure portal
+When the sample application makes a request to Azure Storage, it must be authorized. To authorize a request, add your storage account credentials to the application as a connection string. To view your storage account credentials, follow these steps:
+
+1. Sign in to the [Azure portal](https://portal.azure.com/).
+2. Locate your storage account.
+3. In the storage account menu pane, under **Security + networking**, select **Access keys**. Here, you can view the account access keys and the complete connection string for each key.
+
+
+4. In the **Access keys** pane, select **Show keys**.
+![Access keys](assets/storage-account-access-key.png)
 
 
