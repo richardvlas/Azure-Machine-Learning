@@ -70,4 +70,15 @@ When the sample application makes a request to Azure Storage, it must be authori
 
     ![Access keys](assets/storage-account-access-key.png)
 
+### Configure your storage connection string
+After you copy the connection string, write it to a new environment variable on the local machine running the application. To set the environment variable, open a console window, and follow the instructions for your operating system. Replace `<yourconnectionstring>` with your actual connection string.
+
+### Linux
+```bash
+export AZURE_STORAGE_CONNECTION_STRING="<yourconnectionstring>"
+```
+
+### Restart programs
+After you add the environment variable, restart any running programs that will need to read the environment variable. For example, restart your development environment or editor before you continue.
+
 
