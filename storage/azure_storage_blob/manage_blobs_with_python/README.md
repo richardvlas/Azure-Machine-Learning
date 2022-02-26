@@ -64,8 +64,38 @@ When the sample application makes a request to Azure Storage, it must be authori
 2. Locate your storage account.
 3. In the storage account menu pane, under **Security + networking**, select **Access keys**. Here, you can view the account access keys and the complete connection string for each key.
 
-
 4. In the **Access keys** pane, select **Show keys**.
-![Access keys](assets/storage-account-access-key.png)
+5. In the **key1** section, locate the **Connection string** value. Select the **Copy to clipboard** icon to copy the connection string. You will add the connection string value to an environment variable in the next section.
 
+
+    ![Access keys](assets/storage-account-access-key.png)
+
+### Configure your storage connection string
+After you copy the connection string, write it to a new environment variable on the local machine running the application. To set the environment variable, open a console window, and follow the instructions for your operating system. Replace `<yourconnectionstring>` with your actual connection string.
+
+### Linux
+```bash
+export AZURE_STORAGE_CONNECTION_STRING="<yourconnectionstring>"
+```
+
+### Restart programs
+After you add the environment variable, restart any running programs that will need to read the environment variable. For example, restart your development environment or editor before you continue.
+
+## Object model
+Azure Blob Storage is optimized for storing massive amounts of unstructured data. Unstructured data is data that doesn't adhere to a particular data model or definition, such as text or binary data. Blob storage offers three types of resources:
+
+- The storage account
+- A container in the storage account
+- A blob in the container
+
+The following diagram shows the relationship between these resources.
+
+![Blob storage](assets/blob-storage-structure.png)
+
+
+Use the following Python classes to interact with these resources:
+
+- [BlobServiceClient](https://docs.microsoft.com/en-us/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient): The `BlobServiceClient` class allows you to manipulate Azure Storage resources and blob containers.
+- [ContainerClient](https://docs.microsoft.com/en-us/python/api/azure-storage-blob/azure.storage.blob.containerclient): The `ContainerClient` class allows you to manipulate Azure Storage containers and their blobs.
+- [BlobClient](https://docs.microsoft.com/en-us/python/api/azure-storage-blob/azure.storage.blob.blobclient): The `BlobClient` class allows you to manipulate Azure Storage blobs.
 
